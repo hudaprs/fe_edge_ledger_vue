@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { navbarAnimation } from './assets/js/script'
+
 import Header from './components/layouts/Header'
 import Footer from './components/layouts/Footer'
 
@@ -15,6 +17,9 @@ export default {
   components: {
     Header,
     Footer
+  },
+  mounted() {
+    navbarAnimation()
   }
 }
 </script>

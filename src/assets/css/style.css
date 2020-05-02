@@ -22,6 +22,7 @@ img {
 
 h1,h2 {
   font-weight: 300;
+  line-height: 1.2;
 }
 
 ul {
@@ -45,6 +46,11 @@ p {
   background-color: #333;
   padding: 0 30px;
   opacity: .8;
+  transition: .5s;
+}
+
+.navbar.top {
+  background-color: transparent;
 }
 
 .navbar ul {
@@ -70,7 +76,7 @@ p {
   background: url('../images/home/showcase.jpg') no-repeat center center/cover;
   height: 100vh;
   color: #fff;
-  display: relative;
+  position: relative;
 }
 
 .hero .content {
@@ -103,7 +109,12 @@ p {
 }
 
 .hero * {
-  z-index: 1;
+  z-index: 10;
+}
+
+.hero.blog {
+  background: url('../images/home/blog.jpg') no-repeat center center/cover;
+  height: 30vh;
 }
 
 /* Icons */
@@ -149,6 +160,31 @@ p {
 
 .callback-form input:hover {
   outline-color: #28A745;
+}
+
+/* Post */
+.post {
+  padding: 50px 30px;
+}
+
+.post h1 {
+  font-size: 40px;
+  font-weight: bold;
+  border-bottom: #ccc solid 1px;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.post p {
+  margin-bottom: 10px;
+}
+
+.post img {
+  display: block;
+  margin: auto;
+  width: 300px;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
 /* Footer */

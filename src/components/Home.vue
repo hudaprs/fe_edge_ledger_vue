@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main>
+    <main id="about">
       <!-- Icons -->
       <section id="icons" class="icons bg-light">
         <div class="flex-items">
@@ -47,7 +47,7 @@
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam cupiditate architecto eaque blanditiis aperiam atque alias molestias repellendus dolorem incidunt, itaque in vitae aliquid, perferendis hic ipsa nostrum quisquam facere.
               </p>
-              <a href="#" class="btn btn-outline">
+              <a href="#cases" class="btn btn-outline">
                 <em class="fas fa-chevron-right"></em>
                 Read More
               </a>
@@ -70,21 +70,27 @@
           </p>
         </section>
         <div class="row">
+          <VueEasyLightbox
+            :visible="visible"
+            :imgs="imgs"
+            :index="index"
+            @hide="handleHide"
+          ></VueEasyLightbox>
           <div class="column">
-            <img src="../assets/images/cases/cases1.jpg" alt="Cases 1">
-            <img src="../assets/images/cases/cases2.jpg" alt="Cases 2">
+            <img @click="showMultiple(1)" src="../assets/images/cases/cases1.jpg" alt="Cases 1">
+            <img @click="showMultiple(2)" src="../assets/images/cases/cases2.jpg" alt="Cases 2">
           </div>
           <div class="column">
-            <img src="../assets/images/cases/cases3.jpg" alt="Cases 3">
-            <img src="../assets/images/cases/cases4.jpg" alt="Cases 4">
+            <img @click="showMultiple(3)" src="../assets/images/cases/cases3.jpg" alt="Cases 3">
+            <img @click="showMultiple(4)" src="../assets/images/cases/cases4.jpg" alt="Cases 4">
           </div>
           <div class="column">
-            <img src="../assets/images/cases/cases5.jpg" alt="Cases 5">
-            <img src="../assets/images/cases/cases6.jpg" alt="Cases 6">
+            <img @click="showMultiple(5)" src="../assets/images/cases/cases5.jpg" alt="Cases 5">
+            <img @click="showMultiple(6)" src="../assets/images/cases/cases6.jpg" alt="Cases 6">
           </div>
           <div class="column">
-            <img src="../assets/images/cases/cases7.jpg" alt="Cases 7">
-            <img src="../assets/images/cases/cases8.jpg" alt="Cases 8">
+            <img @click="showMultiple(7)" src="../assets/images/cases/cases7.jpg" alt="Cases 7">
+            <img @click="showMultiple(8)" src="../assets/images/cases/cases8.jpg" alt="Cases 8">
           </div>
         </div>
       </section>
@@ -108,10 +114,10 @@
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam cupiditate architecto eaque blanditiis aperiam atque alias molestias repellendus dolorem incidunt, itaque in vitae aliquid, perferendis hic ipsa nostrum quisquam facere.
               </p>
-              <a href="#" class="btn btn-outline">
+              <router-link to="/blog" class="btn btn-outline">
                 <em class="fas fa-chevron-right"></em>
                 Read Our Blog
-              </a>
+              </router-link>
             </div>
           </div>
         </div>
@@ -195,7 +201,41 @@
 </template>
 
 <script>
+  import VueEasyLightbox from 'vue-easy-lightbox'
+
   export default {
-    name: 'Home'
+    name: 'Home',
+    components: {
+      VueEasyLightbox
+    },
+    data() {
+      return {
+        imgs: null,  // Img Url , string or Array
+        visible: false,
+        index: 0
+      }
+    },
+    methods: {
+      show() {
+        this.visible = true
+      },
+      showMultiple(index) {
+        this.imgs = [
+          require('../assets/images/cases/cases1.jpg'),
+          require('../assets/images/cases/cases2.jpg'),
+          require('../assets/images/cases/cases3.jpg'),
+          require('../assets/images/cases/cases4.jpg'),
+          require('../assets/images/cases/cases5.jpg'),
+          require('../assets/images/cases/cases6.jpg'),
+          require('../assets/images/cases/cases7.jpg'),
+          require('../assets/images/cases/cases8.jpg')
+        ]
+        this.index = index - 1
+        this.show()
+      },
+      handleHide() {
+        this.visible = false
+      }
+    }
   }
 </script>

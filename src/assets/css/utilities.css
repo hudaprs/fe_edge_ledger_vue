@@ -111,6 +111,10 @@
   font-size: 40px;
 }
 
+.flex-columns p {
+  margin: 20px 0;
+}
+
 .flex-columns .btn {
   margin-top: 20px;
 }
